@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alzhek | A clear path through cleft lip and palate care</title>
+<meta name="description" content="alzhek is an online guide and community for people with cleft lip and palate and their families in Kazakhstan and the CIS.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235A45A3'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='white'%3Ea%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8FC;
+    --ink: #211C33;
+    --ink-soft: #4B4560;
+    --violet: #5A45A3;
+    --violet-deep: #43327F;
+    --wash: #ECE7F7;
+    --mint: #D9EBE3;
+    --amber: #E8A63A;
+    --line: #D8D1E8;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --sans: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  html[lang="en"] .ru { display: none; }
+  html[lang="ru"] .en { display: none; }
+
+  a { color: var(--violet-deep); text-underline-offset: 3px; }
+  a:hover { color: var(--violet); }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 0;
+  }
+  .mark {
+    font-family: var(--serif); font-weight: 700; font-size: 1.6rem;
+    letter-spacing: -0.02em; color: var(--violet-deep); text-decoration: none;
+  }
+  .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: #fff; }
+  .lang button {
+    font: inherit; font-size: 0.9rem; font-weight: 500; border: 0; background: transparent;
+    color: var(--ink-soft); padding: 0.3rem 0.85rem; border-radius: 999px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--violet); color: #fff; }
+
+  /* Hero */
+  .hero { padding: 3.5rem 0 3rem; }
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.3rem, 6vw, 4.2rem); line-height: 1.08; letter-spacing: -0.025em;
+    margin: 0 0 1.25rem; max-width: 18ch;
+  }
+  .lede { font-size: 1.2rem; max-width: 40rem; color: var(--ink-soft); margin: 0 0 2rem; }
+  .cta {
+    display: inline-block; background: var(--violet); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 0.8rem 1.4rem; border-radius: 10px;
+  }
+  .cta:hover { background: var(--violet-deep); color: #fff; }
+
+  /* Pathway */
+  .path { margin-top: 3.5rem; }
+  .path h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 1rem; font-weight: 500; color: var(--ink-soft); }
+  .stages { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  .stages::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 1.05rem; height: 3px; background: var(--line);
+  }
+  .stage {
+    position: relative; text-align: left; font: inherit; cursor: pointer;
+    background: none; border: 0; padding: 0; color: var(--ink);
+  }
+  .stage .dot {
+    display: block; width: 2.1rem; height: 2.1rem; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--line); position: relative; z-index: 1;
+    transition: background .15s, border-color .15s;
+  }
+  .stage .age { display: block; margin-top: 0.6rem; font-family: var(--serif); font-weight: 700; font-size: 1.25rem; }
+  .stage .tag { display: block; font-size: 0.92rem; color: var(--ink-soft); }
+  .stage[aria-selected="true"] .dot { background: var(--amber); border-color: var(--amber); }
+  .stage[aria-selected="true"] .age { color: var(--violet-deep); }
+  .stage:hover .dot { border-color: var(--violet); }
+  .panel {
+    margin-top: 1.75rem; background: var(--wash); border-radius: 16px; padding: 1.5rem 1.75rem;
+    max-width: 44rem;
+  }
+  .panel h3 { font-family: var(--serif); font-size: 1.3rem; margin: 0 0 0.6rem; }
+  .panel ul { margin: 0; padding-left: 1.2rem; }
+  .panel li { margin: 0.3rem 0; }
+
+  /* Sections */
+  section.block { padding: 4rem 0; border-top: 1px solid var(--line); }
+  h2.sec { font-family: var(--serif); font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 1.5rem; max-width: 22ch; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .facts { list-style: none; margin: 0; padding: 0; }
+  .facts li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .facts li:first-child { padding-top: 0; }
+  .facts strong { font-family: var(--serif); font-weight: 700; }
+  .note { font-size: 0.92rem; color: var(--ink-soft); margin-top: 1.25rem; }
+
+  .items { display: grid; gap: 1.75rem; }
+  .item h3 { font-family: var(--serif); font-size: 1.3rem; margin: 0 0 0.3rem; }
+  .item p { margin: 0; color: var(--ink-soft); }
+  .status {
+    display: inline-block; font-size: 0.82rem; font-weight: 600; padding: 0.1rem 0.6rem;
+    border-radius: 999px; background: var(--mint); color: #1F4A3A; margin-left: 0.5rem; vertical-align: middle;
+  }
+  .status.dev { background: #F7E7C6; color: #6A4A0C; }
+
+  .progress { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+  .progress li { padding-left: 1.6rem; position: relative; margin: 0.6rem 0; }
+  .progress li::before {
+    content: ""; position: absolute; left: 0; top: 0.55rem; width: 0.8rem; height: 0.8rem; border-radius: 50%;
+  }
+  .progress .done::before { background: var(--violet); }
+  .progress .next::before { border: 2px solid var(--violet); }
+
+  .founder { background: var(--wash); border-radius: 20px; padding: 2.25rem; }
+  .founder p { max-width: 42rem; margin: 0 0 1rem; }
+  .founder p:last-child { margin-bottom: 0; }
+
+  footer { padding: 3rem 0 4rem; border-top: 1px solid var(--line); color: var(--ink-soft); }
+  footer .big { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin: 0 0 0.5rem; }
+
+  @media (max-width: 720px) {
+    .stages { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }
+    .stages::before { display: none; }
+    .two { grid-template-columns: 1fr; gap: 2rem; }
+    section.block { padding: 3rem 0; }
+    .founder { padding: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top" id="top">alzhek</a>
+    <div class="lang" role="group" aria-label="Language / Язык">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="ru" aria-pressed="false">RU</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>
+        <span class="en">A clear path through cleft lip and palate care.</span>
+        <span class="ru">Понятный путь через лечение расщелины губы и нёба.</span>
+      </h1>
+      <p class="lede">
+        <span class="en">alzhek is an online guide and community for people with cleft lip and palate, and their families, in Kazakhstan and the CIS. It covers what the healthcare system leaves out: finding the right specialists, long-term support after the first surgeries, and planning education and career.</span>
+        <span class="ru">alzhek — онлайн-гид и сообщество для людей с расщелиной губы и нёба и их семей в Казахстане и СНГ. Мы закрываем то, чего не хватает в системе здравоохранения: поиск нужных специалистов, поддержка после первых операций, образование и карьера.</span>
+      </p>
+      <a class="cta" href="mailto:mariyam@alzhek.org">
+        <span class="en">Write to us</span><span class="ru">Написать нам</span>
+      </a>
+
+      <div class="path">
+        <h2><span class="en">Treatment and life take years. Pick an age to see what we cover.</span><span class="ru">Лечение и жизнь растянуты на годы. Выберите возраст, чтобы увидеть, что мы покрываем.</span></h2>
+        <div class="stages" role="tablist" aria-label="Stages">
+          <button class="stage" role="tab" id="t0" aria-controls="p0" aria-selected="true" type="button">
+            <span class="dot"></span>
+            <span class="age"><span class="en">0–1 years</span><span class="ru">0–1 год</span></span>
+            <span class="tag"><span class="en">First months</span><span class="ru">Первые месяцы</span></span>
+          </button>
+          <button class="stage" role="tab" id="t1" aria-controls="p1" aria-selected="false" type="button">
+            <span class="dot"></span>
+            <span class="age"><span class="en">2–7 years</span><span class="ru">2–7 лет</span></span>
+            <span class="tag"><span class="en">Speech and school</span><span class="ru">Речь и школа</span></span>
+          </button>
+          <button class="stage" role="tab" id="t2" aria-controls="p2" aria-selected="false" type="button">
+            <span class="dot"></span>
+            <span class="age"><span class="en">8–16 years</span><span class="ru">8–16 лет</span></span>
+            <span class="tag"><span class="en">Teen years</span><span class="ru">Подростковый возраст</span></span>
+          </button>
+          <button class="stage" role="tab" id="t3" aria-controls="p3" aria-selected="false" type="button">
+            <span class="dot"></span>
+            <span class="age"><span class="en">16+ years</span><span class="ru">16+ лет</span></span>
+            <span class="tag"><span class="en">Study and work</span><span class="ru">Учёба и работа</span></span>
+          </button>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
+          <h3><span class="en">Surgeries, feeding, early intervention</span><span class="ru">Операции, кормление, ранняя помощь</span></h3>
+          <ul>
+            <li><span class="en">A step-by-step guide for the early years</span><span class="ru">Пошаговый гид по первым годам жизни</span></li>
+            <li><span class="en">Where to go and what each stage costs</span><span class="ru">Куда обращаться и сколько стоит каждый этап</span></li>
+            <li><span class="en">A community of parents with similar experience</span><span class="ru">Сообщество родителей с похожим опытом</span></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+          <h3><span class="en">Speech therapy, kindergarten and school</span><span class="ru">Логопедия, детский сад и школа</span></h3>
+          <ul>
+            <li><span class="en">How to find a speech therapist who knows cleft care</span><span class="ru">Как найти логопеда, который работает с расщелинами</span></li>
+            <li><span class="en">Preparing for kindergarten and school</span><span class="ru">Подготовка к детскому саду и школе</span></li>
+            <li><span class="en">Real stories from families who have been there</span><span class="ru">Реальные истории семей, прошедших этот путь</span></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+          <h3><span class="en">Orthodontics, appearance, dealing with bullying</span><span class="ru">Ортодонтия, внешность, буллинг</span></h3>
+          <ul>
+            <li><span class="en">Orthodontic and surgical planning</span><span class="ru">Планирование ортодонтического и хирургического лечения</span></li>
+            <li><span class="en">Support with self-confidence</span><span class="ru">Работа с уверенностью в себе</span></li>
+            <li><span class="en">Peers and mentors who understand</span><span class="ru">Ровесники и наставники, которые понимают</span></li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+          <h3><span class="en">Career guidance, education, self-realization</span><span class="ru">Профориентация, образование, самореализация</span></h3>
+          <ul>
+            <li><span class="en">Individual career guidance consultations</span><span class="ru">Индивидуальные консультации по профориентации</span></li>
+            <li><span class="en">Help with portfolio and university applications, including abroad</span><span class="ru">Помощь с портфолио и поступлением, в том числе за границу</span></li>
+            <li><span class="en">Mentorship from adults with cleft conditions</span><span class="ru">Наставничество от взрослых с расщелиной</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="two">
+        <div>
+          <h2 class="sec"><span class="en">Families search for every specialist on their own.</span><span class="ru">Семьи ищут каждого специалиста самостоятельно.</span></h2>
+          <p><span class="en">After the first surgery there is no coordinated care. Each stage means a new search for doctors, often in another city, and information is scattered, outdated or only in English.</span><span class="ru">После первой операции единой системы сопровождения нет. Каждый этап — новый поиск врачей, часто в другом городе, а информация разрознена, устарела или есть только на английском.</span></p>
+        </div>
+        <div>
+          <ul class="facts">
+            <li><span class="en"><strong>Every family</strong> we surveyed faced a misdiagnosis from their first doctor.</span><span class="ru"><strong>Каждая семья</strong> из опрошенных столкнулась с неверным диагнозом у первого врача.</span></li>
+            <li><span class="en"><strong>10–12 surgeries</strong> by the age of 20 are common.</span><span class="ru"><strong>10–12 операций</strong> к 20 годам — обычная история.</span></li>
+            <li><span class="en"><strong>Teenagers</strong> are ambitious but unsure about their future, and want a community.</span><span class="ru"><strong>Подростки</strong> амбициозны, но не уверены в будущем и хотят сообщество.</span></li>
+          </ul>
+          <p class="note"><span class="en">Source: our initial survey of 20 families in Kazakhstan, Uzbekistan and Russia.</span><span class="ru">Источник: наш первичный опрос 20 семей из Казахстана, Узбекистана и России.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec"><span class="en">What we are building</span><span class="ru">Что мы создаём</span></h2>
+      <div class="items">
+        <div class="item">
+          <h3><span class="en">A guide by age</span><span class="ru">Гид по возрастам</span><span class="status dev"><span class="en">In development</span><span class="ru">В разработке</span></span></h3>
+          <p><span class="en">A structured guide covering every stage of treatment and life, from the first months to adulthood.</span><span class="ru">Структурированный гид по всем этапам лечения и жизни: от первых месяцев до взрослого возраста.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="en">A directory of clinics and specialists</span><span class="ru">Каталог клиник и специалистов</span><span class="status dev"><span class="en">In development</span><span class="ru">В разработке</span></span></h3>
+          <p><span class="en">Surgeons, orthodontists and speech therapists across Kazakhstan and the CIS, with verified reviews and prices.</span><span class="ru">Хирурги, ортодонты и логопеды Казахстана и СНГ с проверенными отзывами и ценами.</span></p>
+        </div>
+        <div class="item">
+          <h3><span class="en">Career guidance and a private community for ages 12–25</span><span class="ru">Профориентация и закрытое сообщество для 12–25 лет</span><span class="status dev"><span class="en">MVP in progress</span><span class="ru">MVP в работе</span></span></h3>
+          <p><span class="en">Career guidance based on our own methodology, help with university applications, soft-skills programs and mentors who have lived with a cleft themselves.</span><span class="ru">Профориентация по собственной методологии, помощь с поступлением, развитие мягких навыков и наставники, которые сами выросли с расщелиной.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="two">
+        <div>
+          <h2 class="sec"><span class="en">Where we are</span><span class="ru">Где мы сейчас</span></h2>
+          <ul class="progress">
+            <li class="done"><span class="en">Survey of 20 families in three countries</span><span class="ru">Опрос 20 семей в трёх странах</span></li>
+            <li class="done"><span class="en">First pilot session with 3 teenagers</span><span class="ru">Первая пилотная сессия с тремя подростками</span></li>
+            <li class="done"><span class="en">Career guidance MVP in development</span><span class="ru">MVP по профориентации в разработке</span></li>
+            <li class="next"><span class="en">Next: Telegram bot and a pilot with 10–15 participants</span><span class="ru">Дальше: Telegram-бот и пилот на 10–15 участников</span></li>
+            <li class="next"><span class="en">Next: a closed community group</span><span class="ru">Дальше: закрытая группа сообщества</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="sec"><span class="en">Free for families who need it</span><span class="ru">Бесплатно для тех, кому это нужно</span></h2>
+          <p><span class="en">We are not building a traditional medical charity. The goal is a platform and a community that keeps supporting people during and after treatment, and stays open to low-income families.</span><span class="ru">Мы строим не традиционный благотворительный фонд, а платформу и сообщество, которые поддерживают человека во время и после лечения и остаются доступными для семей с низким доходом.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="founder">
+        <h2 class="sec"><span class="en">Why I am building this</span><span class="ru">Почему я это делаю</span></h2>
+        <p><span class="en">I am Mariyam Alzhekeyeva, the founder. I was born with a double cleft lip and was treated until the age of 24, with more than 14 surgeries. My parents struggled to find specialists in Kazakhstan, so most of my treatment took place in Russia.</span><span class="ru">Меня зовут Мариям Альжекеева, я основатель проекта. Я родилась с двусторонней расщелиной губы и лечилась до 24 лет: более 14 операций. Родителям было трудно найти специалистов в Казахстане, поэтому большая часть лечения прошла в России.</span></p>
+        <p><span class="en">Annual surgeries made it hard to build a portfolio or gain work experience. I have worked in career guidance and international university admissions for more than three years, and I want other young people to have the guide I did not have.</span><span class="ru">Ежегодные операции мешали строить портфолио и набирать опыт. Я больше трёх лет работаю в профориентации и поступлении в зарубежные вузы и хочу, чтобы у других ребят был тот гид, которого не было у меня.</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="big"><span class="en">Join us, share your story, or suggest a clinic.</span><span class="ru">Присоединяйтесь, поделитесь историей или подскажите клинику.</span></p>
+    <p><a href="mailto:mariyam@alzhek.org">mariyam@alzhek.org</a></p>
+    <p>© 2026 alzhek, Kazakhstan</p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var html = document.documentElement;
+
+    // Language: remember a choice, otherwise follow the browser
+    var lang = "en";
+    try {
+      var saved = localStorage.getItem("alzhek-lang");
+      if (saved === "en" || saved === "ru") { lang = saved; }
+      else if ((navigator.language || "").toLowerCase().indexOf("ru") === 0) { lang = "ru"; }
+    } catch (e) {
+      if ((navigator.language || "").toLowerCase().indexOf("ru") === 0) { lang = "ru"; }
+    }
+    function setLang(l) {
+      html.setAttribute("lang", l);
+      document.querySelectorAll(".lang button").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.getAttribute("data-set") === l));
+      });
+      try { localStorage.setItem("alzhek-lang", l); } catch (e) {}
+    }
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.getAttribute("data-set")); });
+    });
+    setLang(lang);
+
+    // Stage tabs
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".stage"));
+    var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        t.setAttribute("aria-selected", String(i === j));
+        t.setAttribute("tabindex", i === j ? "0" : "-1");
+      });
+      panels.forEach(function (p, j) { p.hidden = i !== j; });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(i); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = (i + 1) % tabs.length;
+        if (e.key === "ArrowLeft") n = (i - 1 + tabs.length) % tabs.length;
+        if (n !== null) { e.preventDefault(); select(n); tabs[n].focus(); }
+      });
+    });
+    select(0);
+  })();
+</script>
+</body>
+</html>
